@@ -227,6 +227,8 @@ def new():
         website = request.form.get("website")
         affiliation = request.form.get("affiliation")
 
+        is_hidden = False
+
         user = get_current_user()
 
         existing_team = Teams.query.filter_by(name=teamname).first()
@@ -260,6 +262,10 @@ def new():
             else:
                 entries[field_id] = value
 
+            # Handle competing for prizes
+            if field.name.lower() == "competing for prizes" and not entries[field_id]:
+                is_hidden = True
+
         if website:
             valid_website = validators.validate_url(website)
         else:
@@ -278,7 +284,7 @@ def new():
         if errors:
             return render_template("teams/new_team.html", errors=errors), 403
 
-        team = Teams(name=teamname, password=passphrase, captain_id=user.id)
+        team = Teams(name=teamname, password=passphrase, captain_id=user.id, hidden=is_hidden)
 
         if website:
             team.website = website
