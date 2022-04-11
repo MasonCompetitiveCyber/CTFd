@@ -18,6 +18,15 @@ if [ ! -f .ctfd_secret_key ] && [ -z "$SECRET_KEY" ]; then
     fi
 fi
 
+# Copy SSH key to container if it exists
+SSH_KEY=id_rsa
+if [ -f "$SSH_KEY" ]; then
+        mkdir -p /root/.ssh/
+        chmod 700 /root/.ssh/
+        cp $SSH_KEY /root/.ssh/$SSH_KEY
+        chmod 600 /root/.ssh/$SSH_KEY
+fi
+
 # Ensures that the database is available
 python ping.py
 
