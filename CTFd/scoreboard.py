@@ -23,3 +23,18 @@ def listing():
 
     standings = get_standings()
     return render_template("scoreboard.html", standings=standings, infos=infos)
+
+
+@scoreboard.route("/scoreboard-all")
+@check_score_visibility
+def listing_hidden():
+    infos = get_infos()
+
+    if config.is_scoreboard_frozen():
+        infos.append("Scoreboard has been frozen")
+
+    if is_admin() is True and scores_visible() is False:
+        infos.append("Scores are not currently visible to users")
+
+    standings = get_standings(hidden=True)
+    return render_template("scoreboard_all.html", standings=standings, infos=infos)

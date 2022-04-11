@@ -3,7 +3,7 @@
 {% block content %}
 <div class="jumbotron">
 	<div class="container">
-		<h1>Scoreboard (School Teams)</h1>
+		<h1>Scoreboard (All Teams)</h1>
 	</div>
 </div>
 <div class="container">
@@ -15,7 +15,7 @@
 		</div>
 	</div>
 
-	{% cache 60, CacheKeys.PUBLIC_SCOREBOARD_TABLE %}
+	{% cache 60, CacheKeys.PUBLIC_SCOREBOARD_TABLE_HIDDEN %}
 	{% if standings %}
 	<div id="scoreboard" class="row">
 		<div class="col-md-12">
@@ -23,6 +23,7 @@
 				<thead>
 					<tr>
 						<td scope="col" width="10px"><b>Place</b></td>
+						<td scope="col" width="10px"><b>Type</b></td>
 						<td scope="col"><b>{{ get_mode_as_word(capitalize=True) }}</b></td>
 						<td scope="col"><b>Score</b></td>
 					</tr>
@@ -31,6 +32,13 @@
 					{% for standing in standings %}
 					<tr>
 						<th scope="row" class="text-center">{{ loop.index }}</th>
+						<td>
+							{% if standing.hidden %}
+							<span class="badge badge-danger">Non-School</span>
+							{% else %}
+							<span class="badge badge-primary">School</span>
+							{% endif %}
+						</td>
 						<td>
 							<a href="{{ generate_account_url(standing.account_id) }}">
 								{{ standing.name | truncate(50) }}
@@ -44,6 +52,7 @@
 								<a href="https://majorleaguecyber.org/u/{{ standing.name }}">
 									<span class="badge badge-primary">Official</span>
 								</a>
+
 								{% endif %}
 								{% endif %}
 							</a>

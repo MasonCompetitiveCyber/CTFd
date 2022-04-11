@@ -7,8 +7,8 @@ from CTFd.utils.dates import unix_time_to_utc
 from CTFd.utils.modes import get_model
 
 
-@cache.memoize(timeout=60)
-def get_standings(count=None, admin=False, fields=None):
+# @cache.memoize(timeout=60)
+def get_standings(count=None, admin=False, fields=None, hidden=False):
     """
     Get standings as a list of tuples containing account_id, name, and score e.g. [(account_id, team_name, score)].
 
@@ -94,18 +94,33 @@ def get_standings(count=None, admin=False, fields=None):
             .order_by(sumscores.columns.score.desc(), sumscores.columns.id)
         )
     else:
-        standings_query = (
-            db.session.query(
-                Model.id.label("account_id"),
-                Model.oauth_id.label("oauth_id"),
-                Model.name.label("name"),
-                sumscores.columns.score,
-                *fields,
+        if hidden:
+            standings_query = (
+                db.session.query(
+                    Model.id.label("account_id"),
+                    Model.oauth_id.label("oauth_id"),
+                    Model.name.label("name"),
+                    sumscores.columns.score,
+                    Model.hidden.label("hidden"),
+                    *fields,
+                )
+                .join(sumscores, Model.id == sumscores.columns.account_id)
+                .filter(Model.banned == False)
+                .order_by(sumscores.columns.score.desc(), sumscores.columns.id)
             )
-            .join(sumscores, Model.id == sumscores.columns.account_id)
-            .filter(Model.banned == False, Model.hidden == False)
-            .order_by(sumscores.columns.score.desc(), sumscores.columns.id)
-        )
+        else:
+            standings_query = (
+                db.session.query(
+                    Model.id.label("account_id"),
+                    Model.oauth_id.label("oauth_id"),
+                    Model.name.label("name"),
+                    sumscores.columns.score,
+                    *fields,
+                )
+                .join(sumscores, Model.id == sumscores.columns.account_id)
+                .filter(Model.banned == False, Model.hidden == False)
+                .order_by(sumscores.columns.score.desc(), sumscores.columns.id)
+            )
 
     """
     Only select a certain amount of users if asked.

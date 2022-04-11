@@ -40,6 +40,7 @@ from CTFd.utils.user import (
     get_current_user_recent_ips,
     get_ip,
     is_admin,
+    is_hidden
 )
 
 
@@ -75,9 +76,11 @@ def init_template_globals(app):
     app.jinja_env.globals.update(get_ctf_name=ctf_name)
     app.jinja_env.globals.update(get_ctf_logo=ctf_logo)
     app.jinja_env.globals.update(get_ctf_theme=ctf_theme)
-    app.jinja_env.globals.update(get_configurable_plugins=get_configurable_plugins)
+    app.jinja_env.globals.update(
+        get_configurable_plugins=get_configurable_plugins)
     app.jinja_env.globals.update(get_registered_scripts=get_registered_scripts)
-    app.jinja_env.globals.update(get_registered_stylesheets=get_registered_stylesheets)
+    app.jinja_env.globals.update(
+        get_registered_stylesheets=get_registered_stylesheets)
     app.jinja_env.globals.update(
         get_registered_admin_scripts=get_registered_admin_scripts
     )
@@ -98,6 +101,7 @@ def init_template_globals(app):
     app.jinja_env.globals.update(integrations=integrations)
     app.jinja_env.globals.update(authed=authed)
     app.jinja_env.globals.update(is_admin=is_admin)
+    app.jinja_env.globals.update(is_hidden=is_hidden)
     app.jinja_env.globals.update(get_current_user_attrs=get_current_user_attrs)
     app.jinja_env.globals.update(get_current_team_attrs=get_current_team_attrs)
     app.jinja_env.globals.update(get_ip=get_ip)
@@ -304,4 +308,5 @@ def init_request_processors(app):
                     application_root + request.script_root + request.full_path
                 )
 
-        app.wsgi_app = DispatcherMiddleware(app.wsgi_app, {application_root: app})
+        app.wsgi_app = DispatcherMiddleware(
+            app.wsgi_app, {application_root: app})

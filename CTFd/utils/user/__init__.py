@@ -26,7 +26,8 @@ def get_current_user():
                 if request.content_type == "application/json":
                     error = 401
                 else:
-                    error = redirect(url_for("auth.login", next=request.full_path))
+                    error = redirect(
+                        url_for("auth.login", next=request.full_path))
                 abort(error)
 
         return user
@@ -127,6 +128,14 @@ def is_admin():
     if authed():
         user = get_current_user_attrs()
         return user.type == "admin"
+    else:
+        return False
+
+
+def is_hidden():
+    if authed():
+        user = get_current_user_attrs()
+        return user.hidden
     else:
         return False
 
