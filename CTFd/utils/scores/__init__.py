@@ -7,7 +7,7 @@ from CTFd.utils.dates import unix_time_to_utc
 from CTFd.utils.modes import get_model
 
 
-# @cache.memoize(timeout=60)
+@cache.memoize(timeout=60)
 def get_standings(count=None, admin=False, fields=None, hidden=False):
     """
     Get standings as a list of tuples containing account_id, name, and score e.g. [(account_id, team_name, score)].
