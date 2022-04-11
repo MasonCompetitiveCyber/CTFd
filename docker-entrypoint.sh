@@ -19,12 +19,20 @@ if [ ! -f .ctfd_secret_key ] && [ -z "$SECRET_KEY" ]; then
 fi
 
 # Copy SSH key to container if it exists
-SSH_KEY=id_rsa
-if [ -f "$SSH_KEY" ]; then
+SSH_KEY_RSA=id_rsa
+if [ -f "$SSH_KEY_RSA" ]; then
         mkdir -p /root/.ssh/
         chmod 700 /root/.ssh/
-        cp $SSH_KEY /root/.ssh/$SSH_KEY
-        chmod 600 /root/.ssh/$SSH_KEY
+        cp $SSH_KEY_RSA /root/.ssh/$SSH_KEY_RSA
+        chmod 600 /root/.ssh/$SSH_KEY_RSA
+fi
+
+SSH_KEY_ED=id_ed25519
+if [ -f "$SSH_KEY_ED" ]; then
+        mkdir -p /root/.ssh/
+        chmod 700 /root/.ssh/
+        cp $SSH_KEY_ED /root/.ssh/$SSH_KEY_ED
+        chmod 600 /root/.ssh/$SSH_KEY_ED
 fi
 
 # Ensures that the database is available
