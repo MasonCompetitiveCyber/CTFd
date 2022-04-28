@@ -282,7 +282,7 @@ class ChallengeList(Resource):
             )
 
         db.session.close()
-        return {"success": True, "data": response}
+        return {"success": True, "data": sorted(response, key=lambda x: x["category"], reverse=True)}
 
     @admins_only
     @challenges_namespace.doc(
