@@ -291,19 +291,19 @@ class ChallengeList(Resource):
         db.session.close()
 
         DIFFICULTY_ORDER = {
-            "beginner": 0,
-            "easy": 1,
-            "medium": 2,
-            "hard": 3,
-            "expert": 4,
-            "unset": 5
+            "unset": 0,
+            "beginner": 1,
+            "easy": 2,
+            "medium": 3,
+            "hard": 4,
+            "expert": 5,
         }
 
         # Sort the challenges in the order of category, then tagged difficulty, then point value
         response_sorted_value = sorted(
             response, key=lambda x: x["value"])
         response_sorted_difficulty = sorted(
-            response_sorted_value, key=lambda x: DIFFICULTY_ORDER[x["difficulty"]])
+            response_sorted_value, key=lambda x: DIFFICULTY_ORDER[x.get("difficulty", "unset")])
         response_sorted_category = sorted(
             response_sorted_difficulty, key=lambda x: x["category"], reverse=True)
 
