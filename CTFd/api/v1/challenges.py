@@ -265,6 +265,12 @@ class ChallengeList(Resource):
                 # Challenge type does not exist. Fall through to next challenge.
                 continue
 
+            difficulty = "unset"
+            for tag in tag_schema.dump(challenge.tags).data:
+                if "value" in tag.keys():
+                    if tag["value"].lower() in ["beginner", "easy", "medium", "hard", "expert"]:
+                        difficulty = tag["value"].lower()
+
             # Challenge passes all checks, add it to response
             response.append(
                 {
@@ -278,11 +284,30 @@ class ChallengeList(Resource):
                     "tags": tag_schema.dump(challenge.tags).data,
                     "template": challenge_type.templates["view"],
                     "script": challenge_type.scripts["view"],
+                    "difficulty": difficulty
                 }
             )
 
         db.session.close()
-        return {"success": True, "data": sorted(response, key=lambda x: x["category"], reverse=True)}
+
+        DIFFICULTY_ORDER = {
+            "beginner": 0,
+            "easy": 1,
+            "medium": 2,
+            "hard": 3,
+            "expert": 4,
+            "unset": 5
+        }
+
+        # Sort the challenges in the order of category, then tagged difficulty, then point value
+        response_sorted_value = sorted(
+            response, key=lambda x: x["value"])
+        response_sorted_difficulty = sorted(
+            response_sorted_value, key=lambda x: DIFFICULTY_ORDER[x["difficulty"]])
+        response_sorted_category = sorted(
+            response_sorted_difficulty, key=lambda x: x["category"], reverse=True)
+
+        return {"success": True, "data": response_sorted_category}
 
     @admins_only
     @challenges_namespace.doc(
