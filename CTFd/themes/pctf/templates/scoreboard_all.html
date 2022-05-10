@@ -19,7 +19,7 @@
 	{% if ctf_ended %}
 	<form action="/certificate" method="get">
 		<div class="container text-center">
-			<button type="submit" class="btn btn-primary">Download Certificate</button>	
+			<button type="submit" class="btn btn-primary" name="certButton" value="all">Download Certificate</button>	
 		</div>
 	</form>
 	{% endif %}
@@ -77,7 +77,6 @@
 	{% endcache %}
 </div>
 
-<img style="display:none" src="http://192.168.18.128:4000/themes/pctf/static/img/pctf_cert.png" crossorigin="anonymous" id="certImg">
 <canvas id="canvas" hidden>
 {% endblock %}
 
