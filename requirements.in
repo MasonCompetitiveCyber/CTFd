@@ -29,3 +29,4 @@ python-geoacumen-city
 maxminddb==1.5.4
 tenacity==6.2.0
 pybluemonday==0.0.8
+Pillow==9.0.0
