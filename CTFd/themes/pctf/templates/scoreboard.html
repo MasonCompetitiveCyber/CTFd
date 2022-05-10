@@ -16,7 +16,7 @@
 		</div>
 	</div>
 
-	{% if ctf_ended %}
+	{% if ctf_ended and not hidden %}
 	<form action="/certificate" method="get">
 		<div class="container text-center">
 			<button type="submit" class="btn btn-primary" name="certButton" value="student">Download Certificate</button>	

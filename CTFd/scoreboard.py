@@ -5,7 +5,7 @@ from CTFd.utils.config.visibility import scores_visible
 from CTFd.utils.decorators.visibility import check_score_visibility
 from CTFd.utils.helpers import get_infos
 from CTFd.utils.scores import get_standings
-from CTFd.utils.user import is_admin
+from CTFd.utils.user import is_admin, get_current_user
 from CTFd.utils.dates import ctf_ended
 
 scoreboard = Blueprint("scoreboard", __name__)
@@ -23,7 +23,8 @@ def listing():
         infos.append("Scores are not currently visible to users")
 
     standings = get_standings()
-    return render_template("scoreboard.html", standings=standings, ctf_ended=ctf_ended(), infos=infos)
+    user = get_current_user()
+    return render_template("scoreboard.html", standings=standings, ctf_ended=ctf_ended(), hidden=user.hidden, infos=infos)
 
 
 @scoreboard.route("/scoreboard-all")
