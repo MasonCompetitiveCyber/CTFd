@@ -16,6 +16,14 @@
 		</div>
 	</div>
 
+	{% if ctf_ended %}
+	<form action="/certificate" method="get">
+		<div class="container text-center">
+			<button type="submit" class="btn btn-primary">Download Certificate</button>	
+		</div>
+	</form>
+	{% endif %}
+
 	{% cache 60, CacheKeys.PUBLIC_SCOREBOARD_TABLE %}
 	{% if standings %}
 	<div id="scoreboard" class="row">
