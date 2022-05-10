@@ -24,7 +24,7 @@ def listing():
 
     standings = get_standings()
     user = get_current_user()
-    return render_template("scoreboard.html", standings=standings, ctf_ended=ctf_ended(), hidden=user.hidden, infos=infos)
+    return render_template("scoreboard.html", standings=standings, ctf_ended=ctf_ended(), hidden=user.team.hidden, infos=infos)
 
 
 @scoreboard.route("/scoreboard-all")
