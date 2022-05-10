@@ -34,8 +34,9 @@ def download_cert():
         user = get_current_user()
         user_name = f"[{user.name}]"
         team_name = user.team.name
+        team_place = get_team_place(user.team.id)
 
-        if request.args['certButton'] == "student" and not user.hidden:
+        if request.args['certButton'] == "student":
             standings = get_standings(hidden=False)
             type_text = "[student teams]"
             filename = "pctf-cert-student.png"
@@ -43,11 +44,11 @@ def download_cert():
             standings = get_standings(hidden=True)
             type_text = "[all teams]"
             filename = "pctf-cert-all.png"
-        else:
-            error = "Unauthorized: You are not on a student team!"
-            abort(401, description=error)
             
-        pos = f"Placed {get_team_place(user.team.id)}/{len(standings)}"
+        if team_place is None:
+            pos = "Participated"
+        else:
+            pos = f"Placed {team_place}/{len(standings)}"
 
         cert_img = Image.open('CTFd/themes/pctf/static/img/pctf_cert.png') 
         img_width, _ = cert_img.size
