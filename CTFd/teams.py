@@ -352,7 +352,7 @@ def private():
 def public(team_id):
     infos = get_infos()
     errors = get_errors()
-    team = Teams.query.filter_by(id=team_id, banned=False, hidden=False).first_or_404()
+    team = Teams.query.filter_by(id=team_id, banned=False).first_or_404()
     solves = team.get_solves()
     awards = team.get_awards()
 

@@ -25,7 +25,7 @@ class ScoreboardList(Resource):
     @check_score_visibility
     @cache.cached(timeout=60, key_prefix=make_cache_key)
     def get(self):
-        standings = get_standings()
+        standings = get_standings(hidden=True)
         response = []
         mode = get_config("user_mode")
         account_type = get_mode_as_word()

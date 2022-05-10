@@ -102,7 +102,7 @@ def _build_solves_query(extra_filters=(), admin_view=False):
     # Finally, we never count solves made by hidden or banned users/teams, even
     # if we are an admin. This is to match the challenge detail API.
     exclude_solves_cond = and_(
-        AccountModel.banned == false(), AccountModel.hidden == false(),
+        AccountModel.banned == false()
     )
     # This query counts the number of solves per challenge, as well as the sum
     # of correct solves made by the current user per the condition above (which
@@ -794,7 +794,6 @@ class ChallengeSolves(Resource):
             .filter(
                 Solves.challenge_id == challenge_id,
                 Model.banned == False,
-                Model.hidden == False,
             )
             .order_by(Solves.date.asc())
         )

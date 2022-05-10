@@ -57,7 +57,6 @@ class DynamicValueChallenge(BaseChallenge):
             Solves.query.join(Model, Solves.account_id == Model.id)
             .filter(
                 Solves.challenge_id == challenge.id,
-                Model.hidden == False,
                 Model.banned == False,
             )
             .count()
