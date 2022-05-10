@@ -1,0 +1,134 @@
+@font-face {
+  font-family: "Cascadia Mono";
+  src: local("Cascadia Mono ExtraLight"), local("CascadiaMono-ExtraLight"),
+    url("font/CascadiaMono-ExtraLight.woff2") format("woff2"),
+    url("font/CascadiaMono-ExtraLight.woff") format("woff"),
+    url("font/CascadiaMono-ExtraLight.ttf") format("truetype");
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Cascadia Mono";
+  src: local("Cascadia Mono Light Italic"), local("CascadiaMono-LightItalic"),
+    url("font/CascadiaMono-LightItalic.woff2") format("woff2"),
+    url("font/CascadiaMono-LightItalic.woff") format("woff"),
+    url("font/CascadiaMono-LightItalic.ttf") format("truetype");
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Cascadia Mono";
+  src: local("Cascadia Mono SemiLight Italic"),
+    local("CascadiaMono-SemiLightItalic"),
+    url("font/CascadiaMono-SemiLightItalic.woff2") format("woff2"),
+    url("font/CascadiaMono-SemiLightItalic.woff") format("woff"),
+    url("font/CascadiaMono-SemiLightItalic.ttf") format("truetype");
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Cascadia Mono";
+  src: local("Cascadia Mono Bold"), local("CascadiaMono-Bold"),
+    url("font/CascadiaMono-Bold.woff2") format("woff2"),
+    url("font/CascadiaMono-Bold.woff") format("woff"),
+    url("font/CascadiaMono-Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Cascadia Mono";
+  src: local("Cascadia Mono Regular"), local("CascadiaMono-Regular"),
+    url("font/CascadiaMono-Regular.woff2") format("woff2"),
+    url("font/CascadiaMono-Regular.woff") format("woff"),
+    url("font/CascadiaMono-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Cascadia Mono";
+  src: local("Cascadia Mono ExtraLight Italic"),
+    local("CascadiaMono-ExtraLightItalic"),
+    url("font/CascadiaMono-ExtraLightItalic.woff2") format("woff2"),
+    url("font/CascadiaMono-ExtraLightItalic.woff") format("woff"),
+    url("font/CascadiaMono-ExtraLightItalic.ttf") format("truetype");
+  font-weight: 200;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Cascadia Mono";
+  src: local("Cascadia Mono Bold Italic"), local("CascadiaMono-BoldItalic"),
+    url("font/CascadiaMono-BoldItalic.woff2") format("woff2"),
+    url("font/CascadiaMono-BoldItalic.woff") format("woff"),
+    url("font/CascadiaMono-BoldItalic.ttf") format("truetype");
+  font-weight: bold;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Cascadia Mono";
+  src: local("Cascadia Mono Light"), local("CascadiaMono-Light"),
+    url("font/CascadiaMono-Light.woff2") format("woff2"),
+    url("font/CascadiaMono-Light.woff") format("woff"),
+    url("font/CascadiaMono-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Cascadia Mono";
+  src: local("Cascadia Mono SemiBold"), local("CascadiaMono-SemiBold"),
+    url("font/CascadiaMono-SemiBold.woff2") format("woff2"),
+    url("font/CascadiaMono-SemiBold.woff") format("woff"),
+    url("font/CascadiaMono-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Cascadia Mono";
+  src: local("Cascadia Mono SemiBold Italic"),
+    local("CascadiaMono-SemiBoldItalic"),
+    url("font/CascadiaMono-SemiBoldItalic.woff2") format("woff2"),
+    url("font/CascadiaMono-SemiBoldItalic.woff") format("woff"),
+    url("font/CascadiaMono-SemiBoldItalic.ttf") format("truetype");
+  font-weight: 600;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Cascadia Mono";
+  src: local("Cascadia Mono SemiLight"), local("CascadiaMono-SemiLight"),
+    url("font/CascadiaMono-SemiLight.woff2") format("woff2"),
+    url("font/CascadiaMono-SemiLight.woff") format("woff"),
+    url("font/CascadiaMono-SemiLight.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Cascadia Mono";
+  src: local("Cascadia Mono Italic"), local("CascadiaMono-Italic"),
+    url("font/CascadiaMono-Italic.woff2") format("woff2"),
+    url("font/CascadiaMono-Italic.woff") format("woff"),
+    url("font/CascadiaMono-Italic.ttf") format("truetype");
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}

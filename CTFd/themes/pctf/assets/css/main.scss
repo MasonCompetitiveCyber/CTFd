@@ -1,0 +1,449 @@
+$theme-colors: (
+  "primary": #063,
+);
+
+@import "~bootstrap/scss/bootstrap.scss";
+@import "~highlight.js/styles/github.css";
+@import "includes/jumbotron.css";
+@import "includes/sticky-footer.css";
+@import "includes/award-icons.scss";
+@import "includes/flag-icons.scss";
+@import "includes/utils/opacity.scss";
+@import "includes/utils/min-height.scss";
+@import "cascadiacode/cascadiacode.scss";
+
+html,
+body,
+.container {
+  font-family: "Lato", "LatoOffline", sans-serif;
+}
+
+html,
+body,
+select option {
+  background-color: black;
+  color: white;
+}
+
+.table,
+.text-muted {
+  color: white !important;
+}
+
+h1,
+h2 {
+  font-family: "Raleway", "RalewayOffline", sans-serif;
+  font-weight: 500;
+  letter-spacing: 2px;
+}
+
+table a,
+section a {
+  color: #92c9ff;
+}
+
+table a:hover,
+section a:hover {
+  color: #92c9ff;
+  text-decoration: underline;
+}
+
+table > thead > tr > td {
+  /* Remove border line from thead of all tables */
+  /* It can overlap with other element styles */
+  border-top: none !important;
+}
+
+blockquote {
+  border-left: 4px solid $secondary;
+  padding-left: 15px;
+}
+
+.table thead th {
+  white-space: nowrap;
+}
+
+.fa-spin.spinner {
+  text-align: center;
+  opacity: 0.5;
+}
+
+.spinner-error {
+  padding-top: 20vh;
+  text-align: center;
+  opacity: 0.5;
+}
+
+.jumbotron {
+  border-radius: 0;
+  text-align: center;
+}
+
+.form-control:focus {
+  background-color: transparent;
+  border-color: #a3d39c;
+  box-shadow: 0 0 0 0.1rem #a3d39c;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.input-filled-invalid {
+  background-color: transparent !important;
+  border-color: #d46767;
+  box-shadow: 0 0 0 0.1rem #d46767;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.btn-outlined.btn-theme {
+  background: none;
+  color: #545454;
+  border-color: #545454;
+  border: 3px solid;
+}
+
+.btn-outlined {
+  border-radius: 0;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.btn {
+  letter-spacing: 1px;
+  text-decoration: none;
+  -moz-user-select: none;
+  border-radius: 0;
+  cursor: pointer;
+  display: inline-block;
+  margin-bottom: 0;
+  vertical-align: middle;
+  white-space: nowrap;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 700;
+  padding: 8px 20px;
+}
+
+.btn-info {
+  background-color: #5b7290 !important;
+  border-color: #5b7290 !important;
+}
+
+.badge-info {
+  background-color: #5b7290 !important;
+}
+
+.alert {
+  border-radius: 0 !important;
+  padding: 0.8em;
+}
+
+.btn-fa {
+  cursor: pointer;
+}
+
+.close {
+  cursor: pointer;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.cursor-help {
+  cursor: help;
+}
+
+.fa-disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.badge-notification {
+  vertical-align: top;
+  margin-left: -1.5em;
+  font-size: 50%;
+}
+
+// CUSTOM
+
+.navbar-dark .navbar-nav .nav-link {
+  color: white;
+}
+
+.user-navbar .nav-link {
+  font-size: 14px;
+  padding: 0.25rem 0.5rem;
+}
+
+.badge.badge-hard {
+  background-color: #c52a2a;
+  color: white;
+}
+
+h1,
+h2,
+h3 {
+  font-family: "Cascadia Mono", "Consolas", "Courier New", Courier, monospace;
+}
+
+// Blinking end cursor for titles
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+// h1::after {
+//   content: "\a0";
+//   background-color: #ffffff6c;
+//   animation: blink 1.2s cubic-bezier(1, 0, 0, 1) infinite;
+// }
+
+.jumbotron {
+  background-color: black !important;
+}
+
+.modal-content {
+  background-color: black !important;
+}
+
+.navbar.bg-dark {
+  background-color: rgba(0, 0, 0, 0.6) !important;
+  backdrop-filter: blur(6px);
+}
+
+.btn-dark {
+  background-color: #063;
+}
+
+.challenge-button p {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.challenge-button {
+  border-radius: 6px;
+  font-size: 16px;
+  box-shadow: 0 0 12px #063;
+  border: none;
+  margin-top: 10px;
+  margin-bottom: 15px !important;
+}
+
+.challenge-button:hover,
+.challenge-button:active {
+  background-color: #ffcc33 !important;
+  color: black !important;
+  box-shadow: 0 0 15px #fc3;
+}
+
+.tag-beginner .challenge-button,
+.tag-beginner .challenge-button:hover,
+.tag-beginner .challenge-button:active,
+.tag-Beginner .challenge-button,
+.tag-Beginner .challenge-button:hover,
+.tag-Beginner .challenge-button:active {
+  border-left: 10px solid white !important;
+}
+
+.tag-easy .challenge-button,
+.tag-easy .challenge-button:hover,
+.tag-easy .challenge-button:active,
+.tag-Easy .challenge-button,
+.tag-Easy .challenge-button:hover,
+.tag-Easy .challenge-button:active {
+  border-left: 10px solid green !important;
+}
+
+.tag-medium .challenge-button,
+.tag-medium .challenge-button:hover,
+.tag-medium .challenge-button:active,
+.tag-Medium .challenge-button,
+.tag-Medium .challenge-button:hover,
+.tag-Medium .challenge-button:active {
+  border-left: 10px solid yellow !important;
+}
+
+.tag-hard .challenge-button,
+.tag-hard .challenge-button:hover,
+.tag-hard .challenge-button:active,
+.tag-Hard .challenge-button,
+.tag-Hard .challenge-button:hover,
+.tag-Hard .challenge-button:active {
+  border-left: 10px solid rgb(255, 123, 0) !important;
+}
+
+.tag-expert .challenge-button,
+.tag-expert .challenge-button:hover,
+.tag-expert .challenge-button:active,
+.tag-Expert .challenge-button,
+.tag-Expert .challenge-button:hover,
+.tag-Expert .challenge-button:active {
+  border-left: 10px solid red !important;
+}
+
+.difficulty-label-container {
+  text-align: center;
+}
+
+.difficulty-label {
+  margin: 0 30px;
+}
+
+.difficulty-label::before {
+  border-radius: 5px;
+  width: 10px;
+  height: 10px;
+  display: inline-block;
+  content: "";
+  margin-right: 8px;
+}
+
+.difficulty-label-beginner::before {
+  background-color: white;
+}
+
+.difficulty-label-easy::before {
+  background-color: green;
+}
+
+.difficulty-label-medium::before {
+  background-color: yellow;
+}
+
+.difficulty-label-hard::before {
+  background-color: rgb(255, 123, 0);
+}
+
+.difficulty-label-expert::before {
+  background-color: red;
+}
+
+.form-control {
+  color: white !important;
+  background-color: black !important;
+}
+
+.challenge-input,
+.challenge-submit {
+  border-radius: 6px;
+}
+
+// Challenge close button
+.close {
+  color: white;
+  opacity: initial;
+}
+
+.nav-tabs .nav-item {
+  margin-right: 5px;
+}
+
+.nav-tabs .nav-link {
+  color: white;
+}
+
+.nav-tabs .nav-link.active {
+  color: black;
+}
+
+.file-button-wrapper .btn,
+.challenge-input {
+  border-radius: 6px !important;
+}
+
+.modal-body .nav-tabs {
+  border-bottom: none;
+}
+
+.nav-tabs .nav-link {
+  border-radius: 6px;
+}
+
+.modal-content {
+  background: linear-gradient(45deg, #002c16, #004a26) !important;
+  box-shadow: 0 0 45px -15px #063;
+  border-radius: 18px;
+}
+
+.modal-content a:not(.btn, .nav-link) {
+  color: #a8ffd4;
+}
+
+.modal-content a:not(.btn, .nav-link):hover,
+.modal-content a:not(.btn, .nav-link):active {
+  color: #a8ffd4;
+}
+
+.modal.show .modal-dialog {
+  transform: none !important;
+}
+
+.modal.fade .modal-dialog {
+  transition: transform 0.2s ease-out;
+  transform: scale(0.5);
+}
+
+.nav-tabs .nav-link.active {
+  color: white;
+  background-color: #063;
+  border: none;
+}
+
+.table th,
+.table td {
+  border-top: 1px solid #707070;
+}
+
+.challenge-connection-info {
+  display: block;
+  margin-bottom: 20px;
+}
+
+#container-connection-info,
+.challenge-connection-info code {
+  background-color: white;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.challenge-connection-info code {
+  color: #d70163;
+}
+
+// GLITCH EFFECT
+.glitch {
+  position: relative;
+  margin: 0 auto;
+  color: white;
+  font-size: 70px;
+  font-weight: 600;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  transform: scale3d(1, 1, 1);
+
+  &::before,
+  &::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    overflow: hidden;
+    color: white;
+    clip: rect(0, 900px, 0, 0);
+  }
+
+  &::before {
+    left: 7px;
+    text-shadow: 2px 0 #063;
+    clip: rect(10px, 9999px, 25px, 0);
+  }
+
+  &::after {
+    left: 3px;
+    text-shadow: -2px 0 #fc3;
+    clip: rect(50px, 9999px, 75px, 0);
+  }
+}
