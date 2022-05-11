@@ -717,7 +717,7 @@ class Teams(db.Model):
         return score
 
     @cache.memoize()
-    def get_place(self, admin=False, numeric=False):
+    def get_place(self, admin=False, numeric=False, hidden=False):
         """
         This method is generally a clone of CTFd.scoreboard.get_standings.
         The point being that models.py must be self-reliant and have little
@@ -727,7 +727,7 @@ class Teams(db.Model):
         from CTFd.utils.scores import get_team_standings
         from CTFd.utils.humanize.numbers import ordinalize
 
-        standings = get_team_standings(admin=admin)
+        standings = get_team_standings(admin=admin, hidden=hidden)
 
         for i, team in enumerate(standings):
             if team.team_id == self.id:

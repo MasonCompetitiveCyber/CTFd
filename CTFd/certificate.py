@@ -5,8 +5,8 @@ from PIL import Image, ImageFont, ImageDraw
 
 from CTFd.utils import config
 from CTFd.utils.decorators import require_team
-from CTFd.utils.scores import get_standings
-from CTFd.utils.user import get_current_user, get_team_place
+from CTFd.utils.scores import get_team_standings
+from CTFd.utils.user import get_current_user
 from CTFd.utils.dates import ctf_ended
 
 certificate = Blueprint("certificate", __name__)
@@ -25,6 +25,7 @@ def draw_text(draw, img_width, font, size, text, color, custom_offset=0):
     draw.text((x, y), text, font=font, fill=color) 
     y_offset = y + text_height
 
+
 @certificate.route("/certificate")
 @require_team
 def download_cert():
@@ -34,14 +35,15 @@ def download_cert():
         user = get_current_user()
         user_name = f"[{user.name}]"
         team_name = user.team.name
-        team_place = get_team_place(user.team.id)
 
         if request.args['certButton'] == "student":
-            standings = get_standings(hidden=False)
+            standings = get_team_standings(hidden=False)
+            team_place = user.team.get_place(hidden=False)
             type_text = "[student teams]"
             filename = "pctf-cert-student.png"
         elif request.args['certButton'] == "all":
-            standings = get_standings(hidden=True)
+            standings = get_team_standings(hidden=True)
+            team_place = user.team.get_place(hidden=True)
             type_text = "[all teams]"
             filename = "pctf-cert-all.png"
             
